@@ -21,176 +21,318 @@ using glm::vec3;
 using glm::vec4;
 using glm::mat4;
 
+//Attempt at GLFW game loop
 
+//Globals for camera system
+//vec3 cameraPos = vec3(0.0f, 0.0f, 3.0f);
+//vec3 cameraFront = vec3(0.0f, 0.0f, -1.0f);
+//vec3 cameraUp = vec3(0.0f, 1.0f, 0.0f);
+//float yaw = -90.0f;
+//float pitch = 0.0f;
+//float lastX = 800.0f / 2.0;
+//float lastY = 600.0 / 2.0;
+//float fov = 45.0f;
+//float deltaTime = 0.0f;
+//float lastFrame = 0.0f;
 
-SceneBasic_Uniform::SceneBasic_Uniform(): angle (0.0f), tPrev(0.0f), rotSpeed(glm::pi<float>()/8.0f)
+//scene set up for objects, vars etc
+SceneBasic_Uniform::SceneBasic_Uniform() : angle(0.0f), tPrev(0.0f), rotSpeed(glm::pi<float>() / 16.0f), time(0), water(150.0f, 147.0f, 100, 2), sky(100.0f)
 {
-    ogre = ObjMesh::loadWithAdjacency("../Project_Template/media/bs_ears.obj");       
+    box = ObjMesh::loadWithAdjacency("media/box.obj", true);
+    oil = ObjMesh::loadWithAdjacency("media/oil.obj", true);
+    wall = ObjMesh::loadWithAdjacency("media/wallz.obj", true);
 }
 
 
-
-
-
-
+// scene set
 void SceneBasic_Uniform::initScene()
 {
-   //Sprite implementation
-   
-    //compile();
-    //glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-    //glEnable(GL_DEPTH_TEST);
-    //numSprites = 80;
-    //locations = new float[numSprites * 3];
-    //srand((unsigned int)time(0));
-    //for (int i = 0; i < numSprites; i++)
-    //{
-    //    vec3 p(((float)rand() / RAND_MAX * 2.0f) - 1.0f,
-    //        ((float)rand() / RAND_MAX * 2.0f) - 1.0f,
-    //        ((float)rand() / RAND_MAX * 2.0f) - 1.0f);
-    //    locations[i * 3] = p.x;
-    //    locations[i * 3 + 1] = p.y;
-    //    locations[i * 3 + 2] = p.z;
-    //}
-    //GLuint handle;
-    //glGenBuffers(1, &handle);
-    //glBindBuffer(GL_ARRAY_BUFFER, handle);
-    //glBufferData(GL_ARRAY_BUFFER, numSprites * 3 * sizeof(float), locations, GL_STATIC_DRAW);
-    //delete[] locations;
-    //glGenVertexArrays(1, &sprites);
-    //glBindVertexArray(sprites);
-    //glBindBuffer(GL_ARRAY_BUFFER, handle);
-    //glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, ((GLubyte*)NULL + (0)));
-    //glEnableVertexAttribArray(0); //Vertex pos
-    //glBindVertexArray(0);
-    ////tex file
-    //const char* texName = "../Project_Template/media/texture/bubz.jpg";
-    //Texture::loadTexture(texName);
-    //prog.setUniform("SpriteTex", 0);
-    //prog.setUniform("Size2", 0.15f);
 
-    //WireFrame implementation
-
-    //compile();
-    //glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-    //glEnable(GL_DEPTH_TEST);
-    //float c = 1.5f;
-    //projection = glm::ortho(-0.4f * c, 0.4f * c, -0.3f * c, 0.3f * c, 0.1f, 100.0f);
-    ////Set uniform
-    //prog.setUniform("Line.Width", 0.55f);
-    //prog.setUniform("Line.Color", vec4(0.5f, 0.0f, 0.00f, 1.0f));
-    //prog.setUniform("Material.Kd", 0.7f, 0.7f, 0.7f);
-    //prog.setUniform("Material.Ka", 0.2f, 0.2f, 0.2f);
-    //prog.setUniform("Material.Ks", 0.8f, 0.8f, 0.8f);
-    //prog.setUniform("Material.Shine", 10.0f);
-    //prog.setUniform("Light.Position", vec4(0.0f, 0.0f, 0.0f, 1.0f));
-    //prog.setUniform("Light.Intensity", 1.0f, 1.0f, 1.0f);
-
-    //Toon and Silo highlights imp
+    
     compile();
 
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-
     glEnable(GL_DEPTH_TEST);
 
-    angle = glm::half_pi<float>();
+    //attempts at GLFW for game loop
+    /*glfwInit();
+    window = glfwCreateWindow(640, 480, "Control", NULL, NULL);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);*/
+    //glfwSetCursorPosCallback(window, mouse_callback);
+    camAngle, angle = glm::half_pi<float>();
+    
+    
 
-    prog.setUniform("EdgeWidth", 0.02f);
-    prog.setUniform("PctExtend", 0.25f);
-    prog.setUniform("Line.Color", vec4(0.5f, 0.0f, 0.00f, 1.0f));
-    prog.setUniform("Material.Kd", 0.7f, 0.7f, 0.7f);
-    prog.setUniform("Material.Ka", 0.2f, 0.2f, 0.2f);
-    prog.setUniform("Material.Ks", 0.8f, 0.8f, 0.8f);
-    prog.setUniform("Material.Shine", 10.0f);
-    prog.setUniform("Light.Position", vec4(1.0f, 1.0f, 0.2f, 1.0f));
-    prog.setUniform("Light.Intensity", 0.0f, 1.0f, 1.0f);
+    // texture for scene objects 
+    GLuint Tex1 = Texture::loadTexture("media/texture/mega-drive-blue.png");
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, Tex1);
+    
+    // diffuse texture for water
+    GLuint Tex2 = Texture::loadTexture("media/texture/water.png");
+
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, Tex2);
+
+
+    //https://opengameart.org/content/space-skybox-1
+    // Used with public permisson
+    //Sky box texture
+    GLuint cubeTex =
+        Texture::loadCubeMap("media/texture/night/space");
+    glActiveTexture(GL_TEXTURE2);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, cubeTex);
 
     
+
 }
+
+
 
 void SceneBasic_Uniform::compile()
 {
 	try {
-        
-        prog.compileShader("shader/OLD TO DELETE/Lab 6/siloLine.vert");
-        prog.compileShader("shader/OLD TO DELETE/Lab 6/siloLine.frag");
-        prog.compileShader("shader/OLD TO DELETE/Lab 6/siloLine.geom");
+        //visual object shaders
+        prog.compileShader("shader/ToonPBR.vert");
+        prog.compileShader("shader/ToonPBR.frag");
+        prog.compileShader("shader/ToonPBR.geom");
 		prog.link();
 		prog.use();
+
+        //sea shader
+        postProg.compileShader("shader/Waves.frag");
+        postProg.compileShader("shader/Waves.vert");
+        postProg.link();
+
+        //skybox shader
+        skyProg.compileShader("shader/Skybox.frag");
+        skyProg.compileShader("shader/Skybox.vert");
+        skyProg.link();
+
 	} catch (GLSLProgramException &e) {
 		cerr << e.what() << endl;
 		exit(EXIT_FAILURE);
 	}
 }
 
-void SceneBasic_Uniform::setupFBO()
+void SceneBasic_Uniform::drawObjs()
 {
-    
+    prog.use();
+    //oil rig
+    prog.setUniform("EdgeWidth", 0.0025f);
+    prog.setUniform("PctExtend", 0.00008f);
+    prog.setUniform("Material.Kd", vec3(1.0f, 0.2f, 0.6f));
+    prog.setUniform("Material.Ka", vec3(1.0f, 0.2f, 0.6f));
+    prog.setUniform("Material.Ks", vec3(1.0f, 0.2f, 0.6f));
+    prog.setUniform("Material.Shine", 100.0f);
+    prog.setUniform("Light.Position", vec4(1.0f, 1.8f, 1.0f, 1.0f));
+    prog.setUniform("Light.Intensity", vec3(0.3f, 0.3f, 0.5f));
+    model = mat4(1.0f);
+    model = glm::scale(model, vec3(1.5f, 1.5f, 1.5f));
+    model = glm::translate(model, vec3(0.0f, 3.0f, 0.0f));
+    setMatrices();
+    oil->render();
 
+    //deck boxes
+    prog.setUniform("EdgeWidth", 0.0029f);
+    prog.setUniform("Material.Kd", vec3(1.0f, 0.3f, 0.3f));
+    prog.setUniform("Material.Ka", vec3(1.0f, 0.3f, 0.3f));
+    prog.setUniform("Material.Ks", vec3(1.0f, 0.3f, 0.3f));
+    prog.setUniform("Material.Shine", 20.0f);
+    model = mat4(1.0f);
+    model = glm::scale(model, vec3(1.5f, 1.5f, 1.5f));
+    model = glm::translate(model, vec3(-0.6f, 2.8f, 0.0f));
+    setMatrices();
+    box->render();
+
+    prog.setUniform("Material.Kd", vec3(0.6f, 0.6f, 0.6f));
+    prog.setUniform("Material.Ka", vec3(0.6f, 0.6f, 0.6f));
+    prog.setUniform("Material.Ks", vec3(0.6f, 0.6f, 0.6f));
+    model = mat4(1.0f);
+    model = glm::scale(model, vec3(1.4f, 1.4f, 1.4f));
+    model = glm::translate(model, vec3(-0.0f, 2.8f, 1.5f));
+    setMatrices();
+    box->render();
+
+    prog.setUniform("Material.Kd", vec3(0.6f, 0.6f, 0.6f));
+    prog.setUniform("Material.Ka", vec3(0.6f, 0.6f, 0.6f));
+    prog.setUniform("Material.Ks", vec3(0.6f, 0.6f, 0.6f));
+    model = mat4(1.0f);
+    model = glm::translate(model, vec3(-0.0f, 4.9f, 2.0f));
+    model = glm::rotate(model, glm::radians(30.0f), vec3(0.0f, 1.0f, 0.0f));
+    setMatrices();
+    box->render();
+
+    prog.setUniform("EdgeWidth", 0.0f);
+    prog.setUniform("PctExtend", 0.0f);
+    prog.setUniform("Material.Shine", 120.0f);
+    model = mat4(1.0f);
+    model = glm::scale(model, vec3(0.7f, 0.7f, 0.7f));
+    model = glm::translate(model, vec3(0.0f, -0.7f, 0.0f));
+
+    setMatrices();
+    wall->render();
+
+    glFlush();
 }
+
+void SceneBasic_Uniform::drawWater()
+{
+    //water draw
+    postProg.use();
+    postProg.setUniform("Time", time);
+
+    postProg.setUniform("Light.Position", vec4(1.0f, 1.8f, 1.0f, 1.0f));
+
+    postProg.setUniform("Light.L", vec3(0.2f, 0.2f, 0.2f));
+    postProg.setUniform("Light.La", vec3(0.2f, 0.8f, 0.2f));
+    postProg.setUniform("Material.Kd", vec3(0.4f, 0.6f, 0.6f));
+    postProg.setUniform("Material.Ka", vec3(1.0f, 0.4f, 0.4f));
+    postProg.setUniform("Material.Ks", vec3(1.0f, 0.6f, 0.6f));
+    postProg.setUniform("Material.Shine", 100.0f);
+
+    model = mat4(1.0f);
+    model = glm::translate(model, vec3(0.0f, -1.0f, 0.0f));
+
+    setMatrices();
+    water.render();
+}
+
+void SceneBasic_Uniform::drawScene()
+{
+
+    drawObjs();
+    
+    drawWater();
+}
+
+
+//void SceneBasic_Uniform::input(GLFWwindow* window)
+//{
+//    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+//    {
+//        glfwSetWindowShouldClose(window, true);
+//    }
+//    const float cameraSpeed = 2.5f * deltaTime;
+//    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+//    {
+//        cameraPos += cameraSpeed * cameraFront;
+//    }
+//    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+//    {
+//        cameraPos -= cameraSpeed * cameraFront;
+//    }
+//    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+//    {
+//        cameraPos -= normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+//    }
+//    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+//    {
+//        cameraPos += normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+//    }
+//}
+//
+//void SceneBasic_Uniform::mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
+//{
+//    float xpos = static_cast<float>(xposIn);
+//    float ypos = static_cast<float>(yposIn);
+//
+//    
+//
+//    float xoffset = xpos - lastX;
+//    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+//    lastX = xpos;
+//    lastY = ypos;
+//
+//    float sensitivity = 0.1f; // change this value to your liking
+//    xoffset *= sensitivity;
+//    yoffset *= sensitivity;
+//
+//    yaw += xoffset;
+//    pitch += yoffset;
+//
+//    // make sure that when pitch is out of bounds, screen doesn't get flipped
+//    if (pitch > 89.0f)
+//        pitch = 89.0f;
+//    if (pitch < -89.0f)
+//        pitch = -89.0f;
+//
+//    glm::vec3 front;
+//    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+//    front.y = sin(glm::radians(pitch));
+//    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+//    cameraFront = glm::normalize(front);
+//}
+
 
 
 void SceneBasic_Uniform::update( float t )
 {
+    //camera anim
     float deltaT = t - tPrev;
+    //time for wave animation
+    time = t;
     if (tPrev == 0.0f)
+    {
         deltaT = 0.0f;
 
+    }
+
     tPrev = t;
-    angle += 0.25f * deltaT;
-    if (angle > glm::two_pi<float>())
-        angle -= glm::two_pi<float>();
+    camAngle += 0.25f * deltaT;
+
+    if (camAngle > glm::two_pi<float>())
+        camAngle -= glm::two_pi<float>();
      
-
-
 }
+
+
+
+
+
+
 
 void SceneBasic_Uniform::render()
 {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    vec3 cameraPos(1.5f * cos(angle), 0.0f, 1.5f * sin(angle));
-    view = glm::lookAt(cameraPos,
-        vec3(0.0f, -1.2f, 0.0f),
-        vec3(0.0f, 1.0f, 0.0f));
+    //input(window);
 
+    vec3 cameraPos(5.5f * cos(camAngle), 8.0f, 5.5f * sin(camAngle));
+
+    view = glm::lookAt(cameraPos, vec3(0.0f, 4.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
+
+    projection = glm::perspective(glm::radians(80.0f), (float)width / height, 0.3f, 100.0f);
+
+
+    //draws whole scene and skybox
+    drawScene();
+    skyProg.use();
     model = mat4(1.0f);
     setMatrices();
-    ogre->render();
+    sky.render();
+
+    
+    
 
     glFinish();
-
-    
-
-
-
-
-
-    
     
 }
 
 void SceneBasic_Uniform::resize(int w, int h)
 {
     glViewport(0, 0, w, h);
-
-    //Sprite impl
-    /*width = w;
+    
+    width = w;
     height = h;
-    projection = glm::perspective(glm::radians(70.0f), (float)w / h, 0.3f, 100.0f);*/
+    projection = glm::perspective(glm::radians(80.0f), (float)w / h, 0.3f, 100.0f);
 
-    //Wireframe impl
-    /*float w2 = w / 2.0f;
-    float h2 = h / 2.0f;
-    viewport = mat4(vec4(w2, 0.0f, 0.0f, 0.0f),
-        vec4(0.0f, h2, 0.0f, 0.0f),
-        vec4(0.0f, 0.0f, 1.0f, 0.0f),
-        vec4(w2 + 0, h2 + 0, 0.0f, 1.0f));*/
-
-    //Silo impl
-    float c = 1.5f;
-    projection = glm::ortho(-0.4f * c, 0.4f * c, -0.3f * c, 0.3f * c, 0.1f, 100.0f);
+    
 
 }
 
@@ -202,8 +344,14 @@ void SceneBasic_Uniform::setMatrices()
     prog.setUniform("NormalMatrix",
         glm::mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2])));
     prog.setUniform("MVP", projection * mv);
-    //Wireframe imp
-    //prog.setUniform("ViewportMatrix", viewport);
+
+    postProg.setUniform("ModelViewMatrix", mv);
+    postProg.setUniform("NormalMatrix",
+        glm::mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2])));
+    postProg.setUniform("MVP", projection * mv);
+
+    skyProg.setUniform("MVP", projection * mv);
+
 
 
 }

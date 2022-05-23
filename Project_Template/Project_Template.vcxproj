@@ -151,6 +151,7 @@
     <ClCompile Include="helper\glutils.cpp" />
     <ClCompile Include="helper\objmesh.cpp" />
     <ClCompile Include="helper\plane.cpp" />
+    <ClCompile Include="helper\skybox.cpp" />
     <ClCompile Include="helper\stb\stb_image.cpp" />
     <ClCompile Include="helper\teapot.cpp" />
     <ClCompile Include="helper\texture.cpp" />
@@ -195,6 +196,13 @@
     <None Include="shader\Lab 6\siloLine.frag" />
     <None Include="shader\Lab 6\siloLine.geom" />
     <None Include="shader\Lab 6\siloLine.vert" />
+    <None Include="shader\Skybox.frag" />
+    <None Include="shader\Skybox.vert" />
+    <None Include="shader\ToonPBR.frag" />
+    <None Include="shader\ToonPBR.geom" />
+    <None Include="shader\ToonPBR.vert" />
+    <None Include="shader\Waves.frag" />
+    <None Include="shader\Waves.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helper\aabb.h" />
@@ -206,6 +214,7 @@
     <ClInclude Include="helper\plane.h" />
     <ClInclude Include="helper\scene.h" />
     <ClInclude Include="helper\scenerunner.h" />
+    <ClInclude Include="helper\skybox.h" />
     <ClInclude Include="helper\stb\stb_image.h" />
     <ClInclude Include="helper\stb\stb_image_write.h" />
     <ClInclude Include="helper\teapot.h" />

@@ -14,15 +14,27 @@
 #include "helper/glslprogram.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <GLFW/glfw3.h>
+#include "helper/skybox.h"
+
 
 class SceneBasic_Uniform : public Scene
 {
 private:
-    GLSLProgram prog;
-    
-    std::unique_ptr<ObjMesh> ogre;
+    GLSLProgram prog, postProg, skyProg;
+   
+    std::unique_ptr<ObjMesh> box;
+    std::unique_ptr<ObjMesh> oil;
+    std::unique_ptr<ObjMesh> wall;
 
-    float angle, tPrev, rotSpeed;
+    Plane water;
+    SkyBox sky;
+
+
+
+    float camAngle, tPrev, rotSpeed;
+
+    float angle, time;
     //Wireframe imp
     //glm::mat4 viewport;
 
@@ -30,7 +42,10 @@ private:
 
 
     void compile();
-    void setupFBO();
+    void drawScene();
+    void drawObjs();
+    void drawWater();
+
 
 
 

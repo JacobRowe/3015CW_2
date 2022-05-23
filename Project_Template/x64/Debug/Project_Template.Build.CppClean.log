@@ -1,46 +1,25 @@
-c:\src\3015-labs\project_template - 17 02 lab 3\project_template\x64\debug\vc142.pdb
-c:\src\3015-labs\project_template - 17 02 lab 3\project_template\x64\debug\vc142.idb
-c:\src\3015-labs\project_template - 24 02 lab 4\project_template\x64\debug\vc142.pdb
-c:\src\3015-labs\project_template - 24 02 lab 4\project_template\x64\debug\vc142.idb
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\vc142.pdb
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\vc142.idb
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\glad.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\scenebasic_uniform.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\main.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\trianglemesh.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\torus.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\texture.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\teapot.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\stb_image.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\plane.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\objmesh.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\glutils.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\glslprogram.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\cube.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\vc142.pdb
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\vc142.idb
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\glad.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\main.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\trianglemesh.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\torus.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\texture.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\teapot.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\stb_image.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\plane.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\objmesh.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\glutils.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\glslprogram.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\cube.obj
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\scenebasic_uniform.obj
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\project_template.exe
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\project_template.ilk
-c:\src\3015-labs\project_template - non bastard lab 5\project_template\x64\debug\project_template.pdb
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\project_template.exe
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\project_template.ilk
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\project_template.pdb
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\project_template.tlog\cl.command.1.tlog
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\project_template.tlog\cl.read.1.tlog
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\project_template.tlog\cl.write.1.tlog
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\project_template.tlog\link.command.1.tlog
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\project_template.tlog\link.read.1.tlog
-c:\src\3015-labs\project_template - lab 7 geo shader\project_template\x64\debug\project_template.tlog\link.write.1.tlog
+c:\src\3015cw_2\project_template\x64\debug\vc142.pdb
+c:\src\3015cw_2\project_template\x64\debug\vc142.idb
+c:\src\3015cw_2\project_template\x64\debug\glad.obj
+c:\src\3015cw_2\project_template\x64\debug\scenebasic_uniform.obj
+c:\src\3015cw_2\project_template\x64\debug\main.obj
+c:\src\3015cw_2\project_template\x64\debug\trianglemesh.obj
+c:\src\3015cw_2\project_template\x64\debug\torus.obj
+c:\src\3015cw_2\project_template\x64\debug\texture.obj
+c:\src\3015cw_2\project_template\x64\debug\teapot.obj
+c:\src\3015cw_2\project_template\x64\debug\stb_image.obj
+c:\src\3015cw_2\project_template\x64\debug\skybox.obj
+c:\src\3015cw_2\project_template\x64\debug\plane.obj
+c:\src\3015cw_2\project_template\x64\debug\objmesh.obj
+c:\src\3015cw_2\project_template\x64\debug\glutils.obj
+c:\src\3015cw_2\project_template\x64\debug\glslprogram.obj
+c:\src\3015cw_2\project_template\x64\debug\cube.obj
+c:\src\3015cw_2\project_template\x64\debug\project_template.ilk
+c:\src\3015cw_2\project_template\x64\debug\project_template.exe
+c:\src\3015cw_2\project_template\x64\debug\project_template.pdb
+c:\src\3015cw_2\project_template\x64\debug\project_template.tlog\cl.command.1.tlog
+c:\src\3015cw_2\project_template\x64\debug\project_template.tlog\cl.read.1.tlog
+c:\src\3015cw_2\project_template\x64\debug\project_template.tlog\cl.write.1.tlog
+c:\src\3015cw_2\project_template\x64\debug\project_template.tlog\link.command.1.tlog
+c:\src\3015cw_2\project_template\x64\debug\project_template.tlog\link.read.1.tlog
+c:\src\3015cw_2\project_template\x64\debug\project_template.tlog\link.write.1.tlog

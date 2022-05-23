@@ -66,6 +66,9 @@
     <ClCompile Include="helper\cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="helper\skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\basic_uniform_diffuse.frag">
@@ -107,6 +110,13 @@
     <None Include="shader\Lab 6\siloLine.vert" />
     <None Include="shader\Lab 6\siloLine.geom" />
     <None Include="shader\Lab 6\siloLine.frag" />
+    <None Include="shader\ToonPBR.frag" />
+    <None Include="shader\ToonPBR.geom" />
+    <None Include="shader\ToonPBR.vert" />
+    <None Include="shader\Waves.frag" />
+    <None Include="shader\Waves.vert" />
+    <None Include="shader\Skybox.frag" />
+    <None Include="shader\Skybox.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helper\scene.h">
@@ -161,6 +171,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="helper\cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="helper\skybox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -67,7 +67,7 @@ void GLSLProgram::compileShader(const char *fileName) {
 		string msg = "Unrecognized extension: " + ext;
 		throw GLSLProgramException(msg);
 	}
-
+    
     // Pass the discovered shader type along
     compileShader(fileName, type);
 }
