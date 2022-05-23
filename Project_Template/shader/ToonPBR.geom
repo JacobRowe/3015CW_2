@@ -46,7 +46,7 @@ void emitEdgeQuad(vec3 e0, vec3 e1)
 
 void main() {
 
-	//pass normals and the like straight, no mod?
+	
 	
 	
 

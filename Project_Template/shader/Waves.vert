@@ -33,7 +33,7 @@ void main()
 
     //normal
     vec3 n = vec3(0.0);
-    //x?
+    
     n.xy = normalize(vec2(cos(u), 1.0));
 
     
