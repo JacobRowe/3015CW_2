@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\src\3015-labs\Dependencies\include;C:\Users\jrowe15\Dependencies\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\src\3015-labs\Dependencies\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\src\3015CW_2\Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\src\3015CW_2\Dependencies\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
